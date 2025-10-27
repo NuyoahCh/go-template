@@ -1,0 +1,18 @@
+func twoSum(nums []int, target int) []int {
+    // 初始化 map 结构
+    valToIndex := make(map[int]int)
+    // loop
+    for i, num := range nums {
+        // 差值
+        need := target - num
+        // 判断是否是需要的值
+        if j, ok := valToIndex[need]; ok {
+            return []int{j, i}
+        }
+        // 确定位置
+        valToIndex[num] = i
+    }
+    return nil
+}
+//runtime:0 ms
+//memory:5.7 MB
