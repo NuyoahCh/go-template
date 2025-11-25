@@ -17,7 +17,7 @@ import "testing"
  *     Next *ListNode
  * }
  */
-func deleteDuplicates(head *ListNode) *ListNode {
+func deleteDuplicates01(head *ListNode) *ListNode {
 	dummyDup, dummyUniq := &ListNode{Val: 101}, &ListNode{Val: 101}
 	pDup, pUniq := dummyDup, dummyUniq
 	p := head
