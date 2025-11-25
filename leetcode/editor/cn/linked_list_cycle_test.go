@@ -7,7 +7,10 @@
 
 package leetcode_solutions
 
-import "testing"
+import (
+	"fmt"
+	"testing"
+)
 
 // @lc code=start
 /**
@@ -18,10 +21,12 @@ import "testing"
  * }
  */
 func hasCycle(head *ListNode) bool {
+	// 快慢指针
 	slow, fast := head, head
 	for fast != nil && fast.Next != nil {
 		slow = slow.Next
 		fast = fast.Next.Next
+		// 存在环
 		if slow == fast {
 			return true
 		}
@@ -34,8 +39,8 @@ func hasCycle(head *ListNode) bool {
 func TestLinkedListCycle(t *testing.T) {
 	// your test code here
 	list1 := CreateHead([]int{3, 2, 0, -4})
-	hasCycle(list1)
-	PrintList(list1)
+	res := hasCycle(list1)
+	fmt.Print(res)
 }
 
 /*
