@@ -7,54 +7,50 @@
 
 package leetcode_solutions
 
-import "testing"
-
+import (
+	"testing"
+)
 
 // @lc code=start
 
 func mergeTwoLists(l1 *ListNode, l2 *ListNode) *ListNode {
-    // 虚拟头结点
-    dummy := &ListNode{-1, nil}
-    p := dummy
-    p1 := l1
-    p2 := l2
-
-    for p1 != nil && p2 != nil {
-        // 比较 p1 和 p2 两个指针
-        // 将值较小的的节点接到 p 指针
-        if p1.Val > p2.Val {
-            p.Next = p2
-            p2 = p2.Next
-        } else {
-            p.Next = p1
-            p1 = p1.Next
-        }
-        // p 指针不断前进
-        p = p.Next
-    }
-
-    if p1 != nil {
-        p.Next = p1
-    }
-
-    if p2 != nil {
-        p.Next = p2
-    }
-
-    return dummy.Next
+	// 存在合并产生新的链表，就使用虚拟头节点
+	dummy := &ListNode{-1, nil}
+	// 初始化
+	p := dummy
+	p1, p2 := l1, l2
+	// 遍历两个链表节点
+	for p1 != nil && p2 != nil {
+		// 升序执行
+		if p1.Val < p2.Val {
+			p.Next = p1
+			p1 = p1.Next
+		} else {
+			p.Next = p2
+			p2 = p2.Next
+		}
+		p = p.Next
+	}
+	// 存在长短不一致的情况
+	if p1 == nil {
+		p.Next = p2
+	}
+	if p2 == nil {
+		p.Next = p1
+	}
+	return dummy.Next
 }
+
 // @lc code=end
 
 func TestMergeTwoSortedLists(t *testing.T) {
 	// Add test cases here
 	l1 := CreateHead([]int{1, 2, 4})
 	l2 := CreateHead([]int{1, 3, 4})
-	
+
 	result := mergeTwoLists(l1, l2)
 	PrintList(result)
 }
-
-
 
 /*
 // @lcpr case=start
@@ -69,5 +65,4 @@ func TestMergeTwoSortedLists(t *testing.T) {
 // []\n[0]\n
 // @lcpr case=end
 
- */
-
+*/
