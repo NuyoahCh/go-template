@@ -18,11 +18,8 @@ import "testing"
  * }
  */
 func hasCycle(head *ListNode) bool {
-	if head == nil || head.Next == nil {
-		return false
-	}
 	slow, fast := head, head
-	for fast != nil || fast.Next != nil {
+	for fast != nil && fast.Next != nil {
 		slow = slow.Next
 		fast = fast.Next.Next
 		if slow == fast {
@@ -36,7 +33,9 @@ func hasCycle(head *ListNode) bool {
 
 func TestLinkedListCycle(t *testing.T) {
 	// your test code here
-
+	list1 := CreateHead([]int{3, 2, 0, -4})
+	hasCycle(list1)
+	PrintList(list1)
 }
 
 /*
