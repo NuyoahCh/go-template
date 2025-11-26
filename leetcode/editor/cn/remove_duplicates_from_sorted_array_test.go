@@ -13,7 +13,7 @@ import (
 )
 
 // @lc code=start
-func removeDuplicates(nums []int) int {
+func removeDuplicates01(nums []int) int {
 	slow, fast := 0, 0
 	for fast < len(nums) {
 		if nums[slow] != nums[fast] {
@@ -32,7 +32,7 @@ func removeDuplicates(nums []int) int {
 func TestRemoveDuplicatesFromSortedArray(t *testing.T) {
 	// your test code here
 	num1 := []int{1, 1, 2}
-	fmt.Print(removeDuplicates(num1))
+	fmt.Print(removeDuplicates01(num1))
 }
 
 /*
