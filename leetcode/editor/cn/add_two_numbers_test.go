@@ -20,11 +20,15 @@ import (
  * }
  */
 func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
+	// 初始化虚拟头节点
 	dummy := &ListNode{-1, nil}
 	p := dummy
 	p1, p2 := l1, l2
+	// 进位值
 	carry := 0
+	// 核心执行逻辑
 	for p1 != nil || p2 != nil || carry > 0 {
+		// 存储进位值
 		val := carry
 		if p1 != nil {
 			val += p1.Val
