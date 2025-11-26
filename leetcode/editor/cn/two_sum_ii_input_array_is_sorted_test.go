@@ -13,7 +13,7 @@ import (
 )
 
 // @lc code=start
-func twoSum(numbers []int, target int) []int {
+func twoSum01(numbers []int, target int) []int {
 	left, right := 0, len(numbers)-1
 	for left <= right {
 		sum := numbers[left] + numbers[right]
@@ -34,7 +34,7 @@ func TestTwoSumIiInputArrayIsSorted(t *testing.T) {
 	// your test code here
 	num := []int{2, 7, 11, 15}
 	target := 9
-	fmt.Println(twoSum(num, target))
+	fmt.Println(twoSum01(num, target))
 }
 
 /*
