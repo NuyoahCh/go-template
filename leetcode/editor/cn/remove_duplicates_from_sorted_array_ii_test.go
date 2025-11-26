@@ -14,14 +14,10 @@ import (
 
 // @lc code=start
 func removeDuplicates(nums []int) int {
-	// base case
 	if len(nums) == 0 {
 		return 0
 	}
-	// 快慢指针
-	slow, fast := 0, 0
-	// 计数
-	count := 0
+	slow, fast, count := 0, 0, 0
 	for fast < len(nums) {
 		if nums[slow] != nums[fast] {
 			slow++
