@@ -18,28 +18,21 @@ func removeDuplicates(nums []int) int {
 	if len(nums) == 0 {
 		return 0
 	}
-	// 快慢指针，维护 nums 数组中的符合要求的子数组
+	// 快慢指针
 	slow, fast := 0, 0
-	// 记录元素重复次数
+	// 计数
 	count := 0
-	// 核心执行逻辑
 	for fast < len(nums) {
-		// 两者不相等
-		if nums[fast] != nums[slow] {
+		if nums[slow] != nums[fast] {
 			slow++
 			nums[slow] = nums[fast]
-			// 存在重复，但是元素的个数符合要求
 		} else if slow < fast && count < 2 {
 			slow++
 			nums[slow] = nums[fast]
 		}
-		// 前进，计数
 		fast++
 		count++
-
-		// fast 遇到新的元素
 		if fast < len(nums) && nums[fast] != nums[fast-1] {
-			// count 变量置为 0
 			count = 0
 		}
 	}
