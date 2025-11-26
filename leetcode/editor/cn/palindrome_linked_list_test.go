@@ -20,7 +20,7 @@ import (
  *     Next *ListNode
  * }
  */
-func isPalindrome(head *ListNode) bool {
+func isPalindrome01(head *ListNode) bool {
 	// 初始化快慢指针
 	slow, fast := head, head
 	// 查找链表中间节点
@@ -66,7 +66,7 @@ func reverse(head *ListNode) *ListNode {
 func TestPalindromeLinkedList(t *testing.T) {
 	// your test code here
 	last1 := CreateHead([]int{1, 2, 2, 1})
-	res := isPalindrome(last1)
+	res := isPalindrome01(last1)
 	fmt.Println(res)
 }
 
