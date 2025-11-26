@@ -17,7 +17,6 @@ func moveZeroes(nums []int) {
 	for p := moveElement(nums, 0); p < len(nums); p++ {
 		nums[p] = 0
 	}
-	return
 }
 
 func moveElement(nums []int, val int) int {
