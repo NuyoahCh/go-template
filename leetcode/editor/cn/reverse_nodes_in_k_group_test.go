@@ -26,18 +26,19 @@ func reverseKGroup(head *ListNode, k int) *ListNode {
 	if !hasKNode(head, k) {
 		return head
 	}
-	newHead := reverseNode(head, k)
+
+	newHead := reverseKN(head, k)
 	head.Next = reverseKGroup(successorK, k)
+
 	return newHead
 
 }
 
-// 后继节点
+// 反转后继节点
 var successorK *ListNode
 
-// 判断节点是否成一组
+// 满足一组节点的要求
 func hasKNode(head *ListNode, k int) bool {
-	// k 个为一组
 	for i := 0; i < k; i++ {
 		if head == nil {
 			return false
@@ -48,16 +49,16 @@ func hasKNode(head *ListNode, k int) bool {
 }
 
 // 反转部分链表
-func reverseNode(head *ListNode, n int) *ListNode {
+func reverseKN(head *ListNode, n int) *ListNode {
 	// base case
 	if n == 1 {
+		// 记录下一个节点
 		successorK = head.Next
 		return head
 	}
-	// 反转核心逻辑
-	last := reverseNode(head.Next, n-1)
+	// 核心反转逻辑
+	last := reverseKN(head.Next, n-1)
 	head.Next.Next = head
-	// 连接后继节点
 	head.Next = successorK
 	return last
 }
