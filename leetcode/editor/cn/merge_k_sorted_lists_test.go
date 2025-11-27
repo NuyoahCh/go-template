@@ -21,11 +21,10 @@ import (
  * }
  */
 func mergeKLists(lists []*ListNode) *ListNode {
-	n := len(lists)
-	if n == 0 {
+	if len(lists) == 0 {
 		return nil
 	}
-	return mergeKListsHelper(lists, 0, n-1)
+	return mergeKListsHelper(lists, 0, len(lists)-1)
 }
 
 func mergeKListsHelper(lists []*ListNode, start, end int) *ListNode {
@@ -42,7 +41,6 @@ func mergeTwoList(list1, list2 *ListNode) *ListNode {
 	dummy := &ListNode{-1, nil}
 	p := dummy
 	p1, p2 := list1, list2
-
 	for p1 != nil && p2 != nil {
 		if p1.Val < p2.Val {
 			p.Next = p1
@@ -60,7 +58,6 @@ func mergeTwoList(list1, list2 *ListNode) *ListNode {
 		p.Next = p1
 	}
 	return dummy.Next
-
 }
 
 // @lc code=end
